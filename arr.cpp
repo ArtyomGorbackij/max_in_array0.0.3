@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
 	bool failure = false;
-	int l,max, max2, numbers[10], numb[10];
+	int max=0,numbers[10], numb[10];
 	for (string string; getline(cin, string); ) {
 		istringstream stream(string);
 		for (int i = 0; i < 10; ++i) {
@@ -26,20 +26,13 @@ int main()
 		break;
 	}
       if( !failure ) {
-            max2=numb[0];
-            max=numbers[0];
-            for( int j = 1; j < 10; j++ ) {
-                if(max2<numb[j]){
-                    max2=numb[j];
-                    l=j;
+            for( int j = 1; j < 10; j++ ) {               
+                for( int i = 1; i <10; i++ ) {
+                if (j>=i && numb[j]+numbers[i]>max){
+                max=numb[j]+numbers[i];    }
                     }
             }
-            for( int i = 1; i <= l; i++ ) {
-                if(max<numbers[i]){
-                    max=numbers[i];
-                    }
-            }
-            cout << max+max2;
+            cout << max;
         }
         else {
            cout << "An error has occured while reading numbers from line" << endl;
